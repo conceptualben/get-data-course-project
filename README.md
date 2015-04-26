@@ -1,1 +1,6 @@
-# get-data-course-project
+# Getting and Cleaning Data: Course Project
+
+## NOTE
+This script requires data from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip to be download and extracted into the working directory.
+
+run_analysis.R starts by loading the 'dplyr' package which contains the functions I chose to perform the final summary and grouping. Then it loads the files with the labels for the activities and measurements. The measurement labels are used while loading the raw "x_" files to assign the correct column names right from the start. Then it combines the raw data from the "x_" files with the activity and subject data found on the "y_" and "subject_" files, assigning the values found on "features.txt" as the column names for the data sets. "Activity" factors are replaced with the descriptive labels from "activity_labels.txt". Both data sets are combined into one that's later filtered by the columns referring to mean and standard deviations of measurements. That filtered data gets grouped by subject/activity and summarized into means with help of "group_by" and "summarise_each_" functions from the dplyr library. This final data set is finally written to a txt file with a header, sep="".
